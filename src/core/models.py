@@ -142,3 +142,15 @@ class Newsletter(models.Model):
 
     def __str__(self):
         return self.email
+
+
+class Quotation(models.Model):
+    fullName = models.CharField(max_length=250, blank=True, null=True)
+    email = models.EmailField(blank=True, null=True)
+    timestamp = models.DateTimeField(default=timezone.now)
+
+    class Meta:
+        ordering = ('-timestamp',)
+
+    def __str__(self):
+        return self.fullName

@@ -23,6 +23,7 @@ urlpatterns = [
     path('contact-email', views.ContactEmail, name='contact-email'),
     path('enquiry-email', views.EnquiryEmail, name='enquiry-email'),
     path('newsletter', views.Newsletter, name='newsletter'),
+    path('quotation', views.Quotation, name='quotation'),
 ]
 
 

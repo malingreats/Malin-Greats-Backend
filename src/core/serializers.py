@@ -1,6 +1,6 @@
 
 from rest_framework import serializers
-from .models import Items, Details, Customer, SiteImages, Articles, AgricultureSignUp, RetailSignUp, EducationSignUp, ContactEmail, EnquiryEmail, Newsletter
+from .models import Items, Details, Customer, SiteImages, Articles, AgricultureSignUp, RetailSignUp, EducationSignUp, ContactEmail, EnquiryEmail, Newsletter, Quotation
 
 
 class ItemsSerializer(serializers.ModelSerializer):
@@ -76,4 +76,10 @@ class EnquiryEmailSerializer(serializers.ModelSerializer):
 class NewsletterSerializer(serializers.ModelSerializer):
     class Meta:
         model = Newsletter
+        fields = '__all__'
+
+
+class QuotationSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Quotation
         fields = '__all__'

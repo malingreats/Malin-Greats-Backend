@@ -7,8 +7,8 @@ from django.core.mail import send_mail
 import datetime
 
 
-from .serializers import ItemsSerializer, DetailsSerializer, CustomerSerializer, SiteImagesSerializer, ArticlesSerializer, AgricultureSignUpSerializer, RetailSignUpSerializer, EducationSignUpSerializer, ContactEmailSerializer, EnquiryEmailSerializer, NewsletterSerializer
-from .models import Items, Details, Customer, SiteImages, Articles, AgricultureSignUp, RetailSignUp, EducationSignUp, ContactEmail, EnquiryEmail, Newsletter
+from .serializers import ItemsSerializer, DetailsSerializer, CustomerSerializer, SiteImagesSerializer, ArticlesSerializer, AgricultureSignUpSerializer, RetailSignUpSerializer, EducationSignUpSerializer, ContactEmailSerializer, EnquiryEmailSerializer, NewsletterSerializer, QuotationSerializer
+from .models import Items, Details, Customer, SiteImages, Articles, AgricultureSignUp, RetailSignUp, EducationSignUp, ContactEmail, EnquiryEmail, Newsletter, Quotation
 from .utils import Util
 
 
@@ -234,6 +234,25 @@ def Newsletter(request):
     body = 'Hello' + '\n' + email + 'just joined the newsleter mail list'
     if serializer.is_valid():
         send_mail('Malin Newsletter Subscriptions', body, 'malingreatsdev@gmail.com',
+                  ['malingreatsdev@gmail.com', 'benjaminnyakambangwe@gmail.com'], fail_silently=False)
+        # send_mail('', body , 'fastdcomga@gmail.com',
+        #           ['fastdcomga@gmail.com'], fail_silently=False)
+        serializer.save()
+
+    else:
+        return Response('serializer not valid')
+    return Response(serializer.data)
+
+
+@api_view(['POST'])
+def Quotation(request):
+    serializer = QuotationSerializer(data=request.data)
+    data = request.data
+    fullName = data.get('fullName')
+    email = data.get('email')
+    body = fullName + '\n' + email + '\n Asking for a quotation'
+    if serializer.is_valid():
+        send_mail('MG Smart Systems Qoutation', body, 'malingreatsdev@gmail.com',
                   ['malingreatsdev@gmail.com', 'benjaminnyakambangwe@gmail.com'], fail_silently=False)
         # send_mail('', body , 'fastdcomga@gmail.com',
         #           ['fastdcomga@gmail.com'], fail_silently=False)

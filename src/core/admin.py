@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from .models import Articles, Newsletter, SiteImages, Items, AgricultureSignUp, RetailSignUp, EducationSignUp, ContactEmail, EnquiryEmail, Newsletter
+from .models import Articles, Newsletter, SiteImages, Items, AgricultureSignUp, RetailSignUp, EducationSignUp, ContactEmail, EnquiryEmail, Newsletter, Quotation
 
 admin.site.site_header = "MALIN GREATS ADMIN"
 
@@ -14,3 +14,4 @@ admin.site.register(EducationSignUp)
 admin.site.register(ContactEmail)
 admin.site.register(EnquiryEmail)
 admin.site.register(Newsletter)
+admin.site.register(Quotation)
